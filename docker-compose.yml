@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: go-samurai-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: sa
+      POSTGRES_DB: go_samurai
+    ports:
+      - "5433:5432"
+    volumes:
+      - go-samurai-postgres-data:/var/lib/postgresql/data
+
+volumes:
+  go-samurai-postgres-data:
